@@ -1,24 +1,33 @@
 # TODO List for EcoTech API Project
 
 ## Nivel 5: Initial Setup and GET /list
-- [ ] Initialize npm project (npm init)
-- [ ] Install dependencies (express, body-parser)
-- [ ] Create server.js (main entry point)
-- [ ] Create src/models/technologies.js (hard-coded data for 10 technologies)
-- [ ] Create src/services/technologiesService.js (service with DTO)
-- [ ] Create src/dtos/TechnologyDTO.js
-- [ ] Create src/controllers/technologiesController.js
-- [ ] Create src/routes/technologiesRoutes.js (GET /list)
-- [ ] Create src/routes/index.js
-- [ ] Update package.json scripts
-- [ ] Create README.md
-- [ ] Create .gitignore
-- [ ] Create GitHub repo and initial commit
-- [ ] Install Postman and create collection (postman_collection.json)
+- [x] Initialize npm project (npm init)
+- [x] Install dependencies (express, body-parser)
+- [x] Create server.js (main entry point)
+- [x] Create src/models/technologies.js (hard-coded data for 10 technologies)
+- [x] Create src/services/technologiesService.js (service with DTO)
+- [x] Create src/dtos/TechnologyDTO.js
+- [x] Create src/controllers/technologiesController.js
+- [x] Create src/routes/technologiesRoutes.js (GET /list)
+- [x] Create src/routes/index.js
+- [x] Update package.json scripts
+- [x] Create README.md
+- [x] Create .gitignore
+- [x] Initialize git and initial commit
+- [x] Create Postman collection (postman_collection.json)
 
 ## Nivel 6: GET /details/{id}
-- [ ] Update technologiesController.js (add details endpoint)
-- [ ] Update technologiesRoutes.js (add /details/{id})
+- [x] Update technologiesController.js (add details endpoint)
+- [x] Update technologiesRoutes.js (add /details/{id})
+
+## Add CRUD for Technologies (Admin Routes)
+- [ ] Update src/models/technologies.js (add addTechnology, updateTechnology, deleteTechnology)
+- [ ] Update src/services/technologiesService.js (add create, update, delete methods)
+- [ ] Update src/controllers/technologiesController.js (add create, update, delete handlers)
+- [ ] Update src/routes/technologiesRoutes.js (add POST /admin/add, PUT /admin/edit/:id, DELETE /admin/delete/:id)
+- [ ] Update postman_collection.json (add requests for CRUD)
+- [ ] Update README.md (document new endpoints)
+- [ ] Update TODO.md (mark complete)
 
 ## Nivel 7: Modularization
 - [ ] Create src/models/articles.js and categories.js
