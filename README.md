@@ -12,12 +12,13 @@ API for informational resources about ecological technologies.
 2. Run server: `npm start`
 3. For development: `npm run dev`
 
-## Endpoints (Nivel 5-6 + Admin CRUD)
-- GET /technologies/list: List all technologies (static list of 10 items)
-- GET /technologies/details/{id}: Get details of a specific technology by id (404 if invalid id)
-- POST /technologies/admin/add: Add new technology (body: name, description, category, efficiency)
-- PUT /technologies/admin/edit/{id}: Update technology by id
-- DELETE /technologies/admin/delete/{id}: Delete technology by id
+## Endpoints (Nivel 5-6 + Admin CRUD + Search)
+- GET /technologies/list: List all technologies (static list of 10 items, names in uppercase)
+- GET /technologies/details/{id}: Get details of a specific technology by id (404 if invalid id, name in uppercase)
+- GET /technologies/search?name=<query>: Search technologies by name (case-insensitive partial match, returns list, names in uppercase)
+- POST /technologies/admin/add: Add new technology (body: name, description, category, efficiency, name stored in uppercase)
+- PUT /technologies/admin/edit/{id}: Update technology by id (name updated to uppercase)
+- DELETE /technologies/admin/delete/{id}: Delete technology by id (name in response uppercase)
 
 ## Testing (Nivel 5-6 + Admin CRUD)
 1. Start the server: `npm start`

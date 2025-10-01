@@ -35,8 +35,8 @@
 - [ ] Update routes/index.js for modular paths (e.g., /technologies, /articles)
 
 ## Nivel 8: /search with query params
-- [ ] Update services for search logic (filter by name, category, etc.)
-- [ ] Update controllers and routes for /search endpoints
+- [x] Update services for search logic (filter by name, category, etc.)
+- [x] Update controllers and routes for /search endpoints
 
 ## Nivel 9: Admin/Public Separation
 - [ ] Create src/middlewares/authMiddleware.js and roleMiddleware.js

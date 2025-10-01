@@ -12,10 +12,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3001/technologies/list",
+          "raw": "http://localhost:3000/technologies/list",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "3001",
+          "port": "3000",
           "path": ["technologies", "list"]
         }
       },
@@ -27,10 +27,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3001/technologies/details/1",
+          "raw": "http://localhost:3000/technologies/details/1",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "3001",
+          "port": "3000",
           "path": ["technologies", "details", "1"]
         }
       },
@@ -51,10 +51,10 @@
           "raw": "{\"name\": \"New Eco Tech\", \"description\": \"Description here\", \"category\": \"Renewable Energy\", \"efficiency\": 85}"
         },
         "url": {
-          "raw": "http://localhost:3001/technologies/admin/add",
+          "raw": "http://localhost:3000/technologies/admin/add",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "3001",
+          "port": "3000",
           "path": ["technologies", "admin", "add"]
         }
       },
@@ -78,7 +78,7 @@
           "raw": "http://localhost:3000/technologies/admin/edit/1",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "3001",
+          "port": "3000",
           "path": ["technologies", "admin", "edit", "1"]
         }
       },
@@ -90,10 +90,10 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:3001/technologies/admin/delete/11",
+          "raw": "http://localhost:3000/technologies/admin/delete/11",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "3001",
+          "port": "3000",
           "path": ["technologies", "admin", "delete", "11"]
         }
       },

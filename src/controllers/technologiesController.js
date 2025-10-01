@@ -11,7 +11,18 @@ class TechnologiesController {
     }
   }
 
-  // GET /details/{id} - return technology details or 404
+  // GET /search - search technologies by name
+  search(req, res) {
+    try {
+      const { name } = req.query;
+      const results = technologiesService.searchByName(name);
+      res.status(200).json(results);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  // GET /details/{id}
   getDetails(req, res) {
     try {
       const { id } = req.params;

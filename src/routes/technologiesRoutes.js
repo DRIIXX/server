@@ -5,6 +5,9 @@ const technologiesController = require('../controllers/technologiesController');
 // GET /list - static list of technologies
 router.get('/list', (req, res) => technologiesController.getList(req, res));
 
+// GET /search - search technologies by name
+router.get('/search', (req, res) => technologiesController.search(req, res));
+
 // GET /details/:id - technology details or 404
 router.get('/details/:id', (req, res) => technologiesController.getDetails(req, res));
 
