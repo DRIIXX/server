@@ -45,13 +45,13 @@ class TechnologiesService {
   }
 
   // Delete technology by id and return DTO or null
-  delete(id) {
-    const deletedTech = deleteTechnology(id);
-    if (deletedTech) {
-      return new TechnologyDTO(deletedTech.id, nameToUpperPipe(deletedTech.name), deletedTech.description, deletedTech.category, deletedTech.efficiency);
-    }
-    return null;
-  }
+//  delete(id) {
+//    const deletedTech = deleteTechnology(id);
+//    if (deletedTech) {
+//      return new TechnologyDTO(deletedTech.id, nameToUpperPipe(deletedTech.name), deletedTech.description, deletedTech.category, deletedTech.efficiency);
+//    }
+//    return null;
+//  }
 }
 
 module.exports = new TechnologiesService();
