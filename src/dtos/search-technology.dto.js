@@ -5,7 +5,7 @@ class SearchTechnologyDto {
 }
 
 SearchTechnologyDto.schema = {
-  name: { type: "string", required: true, minLength: 2, maxLength: 80 },
+  name: { type: "string", optional: true, minLength: 2, maxLength: 80 },
 };
 
 module.exports = SearchTechnologyDto;
