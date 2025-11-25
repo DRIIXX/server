@@ -4,21 +4,31 @@ API for informational resources about ecological technologies.
 
 ## Entities
 - Technologies: Ecological technologies (e.g., solar panels).
-- Articles: Informational articles.
-- Categories: Categories for grouping.
+- Categories: Categories used to validate and group technologies.
 
 ## Setup
 1. Install dependencies: `npm install`
 2. Run server: `npm start`
 3. For development: `npm run dev`
 
-## Endpoints (Nivel 5-6 + Admin CRUD + Search)
+## Endpoints
 - GET /technologies/list: List all technologies (static list of 10 items, names in uppercase)
-- GET /technologies/details/{id}: Get details of a specific technology by id (404 if invalid id, name in uppercase)
-- GET /technologies/search?name=<query>: Search technologies by name (case-insensitive partial match, returns list, names in uppercase)
-- POST /technologies/admin/add: Add new technology (body: name, description, category, efficiency, name stored in uppercase)
-- PUT /technologies/admin/edit/{id}: Update technology by id (name updated to uppercase)
-- DELETE /technologies/admin/delete/{id}: Delete technology by id (name in response uppercase)
+- GET /technologies/details/{id}: Get details of a specific technology by id (validated numeric param, 404 if invalid id)
+- GET /technologies/search?name=<query>: Search technologies by name (validated query, case-insensitive partial match, returns list, names in uppercase)
+- POST /technologies/admin/add: Add new technology (validated body, name stored in uppercase)
+- PUT /technologies/admin/edit/{id}: Update technology by id (validated param + body, name updated to uppercase)
+- DELETE /technologies/admin/delete/{id}: Delete technology by id (validated param, name in response uppercase)
+
+## Validation
+- Global ValidationPipe config: `whitelist: true`, `forbidNonWhitelisted: true`, `transform: true`.
+- DTOs: `src/dtos/create-technology.dto.js`, `src/dtos/update-technology.dto.js`, `src/dtos/search-technology.dto.js`, `src/dtos/technology-id.dto.js`.
+- Required body fields when creating: `name` (3-80 chars), `description` (15-300 chars), `category` (must be in Categories), `efficiency` (1-300 number), `contactEmail` (valid email). Optional: `maintenanceCost` (>=0), `isDeprecated` (boolean), `deprecatedReason` (min 10 chars if `isDeprecated` is true).
+- Params and queries are validated too: `id` must be a positive number; `name` query must be at least 2 characters.
+
+### Quick validation scenarios (curl)
+- Valid: `curl -X POST http://localhost:3000/technologies/admin/add -H "Content-Type: application/json" -d "{\"name\":\"Battery Storage\",\"description\":\"Grid scale battery units for peak shifting\",\"category\":\"Energy Infrastructure\",\"efficiency\":88,\"contactEmail\":\"ops@storage.example.com\"}"`
+- Invalid (missing/whitelist): same call but add extra field `foo: "bar"` or leave out `contactEmail` → `400` with error details.
+- Conditional: include `"isDeprecated": true` but omit `"deprecatedReason"` → `400`; add `"deprecatedReason": "Superseded by new generation"` to pass.
 
 ## Testing (Nivel 5-6 + Admin CRUD)
 1. Start the server: `npm start`

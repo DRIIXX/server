@@ -17,7 +17,11 @@ class TechnologiesService {
           nameToUpperPipe(t.name),
           t.description,
           t.category,
-          t.efficiency
+          t.efficiency,
+          t.contactEmail,
+          t.maintenanceCost,
+          t.isDeprecated,
+          t.deprecatedReason
         )
     );
   }
@@ -38,21 +42,29 @@ class TechnologiesService {
           nameToUpperPipe(t.name),
           t.description,
           t.category,
-          t.efficiency
+          t.efficiency,
+          t.contactEmail,
+          t.maintenanceCost,
+          t.isDeprecated,
+          t.deprecatedReason
         )
     );
   }
 
   // Return TechnologyDTO by id or null if not found
   getById(id) {
-    const tech = technologies.find((t) => t.id === parseInt(id));
+    const tech = technologies.find((t) => t.id === parseInt(id, 10));
     if (tech) {
       return new TechnologyDTO(
         tech.id,
         nameToUpperPipe(tech.name),
         tech.description,
         tech.category,
-        tech.efficiency
+        tech.efficiency,
+        tech.contactEmail,
+        tech.maintenanceCost,
+        tech.isDeprecated,
+        tech.deprecatedReason
       );
     }
     return null;
@@ -60,26 +72,42 @@ class TechnologiesService {
 
   // Create new technology and return DTO
   create(newTechData) {
-    const newTech = addTechnology(newTechData);
+    const payload =
+      newTechData && newTechData.isDeprecated === false
+        ? { ...newTechData, deprecatedReason: null }
+        : newTechData;
+    const newTech = addTechnology(payload);
     return new TechnologyDTO(
       newTech.id,
       nameToUpperPipe(newTech.name),
       newTech.description,
       newTech.category,
-      newTech.efficiency
+      newTech.efficiency,
+      newTech.contactEmail,
+      newTech.maintenanceCost,
+      newTech.isDeprecated,
+      newTech.deprecatedReason
     );
   }
 
   // Update technology by id and return DTO or null
   update(id, updatedData) {
-    const updatedTech = updateTechnology(id, updatedData);
+    const normalizedData =
+      updatedData && updatedData.isDeprecated === false
+        ? { ...updatedData, deprecatedReason: null }
+        : updatedData;
+    const updatedTech = updateTechnology(id, normalizedData);
     if (updatedTech) {
       return new TechnologyDTO(
         updatedTech.id,
         nameToUpperPipe(updatedTech.name),
         updatedTech.description,
         updatedTech.category,
-        updatedTech.efficiency
+        updatedTech.efficiency,
+        updatedTech.contactEmail,
+        updatedTech.maintenanceCost,
+        updatedTech.isDeprecated,
+        updatedTech.deprecatedReason
       );
     }
     return null;
@@ -94,7 +122,11 @@ class TechnologiesService {
         nameToUpperPipe(deletedTech.name),
         deletedTech.description,
         deletedTech.category,
-        deletedTech.efficiency
+        deletedTech.efficiency,
+        deletedTech.contactEmail,
+        deletedTech.maintenanceCost,
+        deletedTech.isDeprecated,
+        deletedTech.deprecatedReason
       );
     }
     return null;

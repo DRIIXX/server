@@ -1,27 +1,133 @@
 // Hard-coded data for Technologies entity
 let technologies = [
-  { id: 1, name: 'Solar Panels', description: 'Photovoltaic panels that convert sunlight into electricity.', category: 'Renewable Energy', efficiency: 20 },
-  { id: 2, name: 'Wind Turbines', description: 'Devices that convert wind energy into electrical power.', category: 'Renewable Energy', efficiency: 45 },
-  { id: 3, name: 'Electric Vehicles', description: 'Vehicles powered by electric motors instead of internal combustion engines.', category: 'Transportation', efficiency: 90 },
-  { id: 4, name: 'Recycling Systems', description: 'Automated systems for sorting and recycling waste materials.', category: 'Waste Management', efficiency: 70 },
-  { id: 5, name: 'LED Lighting', description: 'Energy-efficient lighting using light-emitting diodes.', category: 'Energy Efficiency', efficiency: 80 },
-  { id: 6, name: 'Hydroponics', description: 'Soil-less farming technique using nutrient-rich water.', category: 'Agriculture', efficiency: 60 },
-  { id: 7, name: 'Geothermal Heat Pumps', description: 'Systems that use earth\'s heat for heating and cooling.', category: 'Renewable Energy', efficiency: 300 },
-  { id: 8, name: 'Bioplastic Materials', description: 'Plastics derived from renewable biomass sources.', category: 'Materials', efficiency: 50 },
-  { id: 9, name: 'Smart Grids', description: 'Advanced electrical grids with monitoring and control.', category: 'Energy Infrastructure', efficiency: 85 },
-  { id: 10, name: 'Water Purification Filters', description: 'Filters that remove contaminants from water sources.', category: 'Water Management', efficiency: 95 }
+  {
+    id: 1,
+    name: "Solar Panels",
+    description: "Photovoltaic panels that convert sunlight into electricity.",
+    category: "Renewable Energy",
+    efficiency: 20,
+    contactEmail: "info@solarpanels.example.com",
+    maintenanceCost: 1200,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 2,
+    name: "Wind Turbines",
+    description: "Devices that convert wind energy into electrical power.",
+    category: "Renewable Energy",
+    efficiency: 45,
+    contactEmail: "contact@windpower.example.com",
+    maintenanceCost: 3500,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 3,
+    name: "Electric Vehicles",
+    description: "Vehicles powered by electric motors instead of internal combustion engines.",
+    category: "Transportation",
+    efficiency: 90,
+    contactEmail: "partners@evfleet.example.com",
+    maintenanceCost: 800,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 4,
+    name: "Recycling Systems",
+    description: "Automated systems for sorting and recycling waste materials.",
+    category: "Waste Management",
+    efficiency: 70,
+    contactEmail: "hello@recycletech.example.com",
+    maintenanceCost: 1600,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 5,
+    name: "LED Lighting",
+    description: "Energy-efficient lighting using light-emitting diodes.",
+    category: "Energy Efficiency",
+    efficiency: 80,
+    contactEmail: "sales@leds.example.com",
+    maintenanceCost: 200,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 6,
+    name: "Hydroponics",
+    description: "Soil-less farming technique using nutrient-rich water.",
+    category: "Agriculture",
+    efficiency: 60,
+    contactEmail: "grow@hydroponics.example.com",
+    maintenanceCost: 900,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 7,
+    name: "Geothermal Heat Pumps",
+    description: "Systems that use earth's heat for heating and cooling.",
+    category: "Renewable Energy",
+    efficiency: 300,
+    contactEmail: "support@geothermal.example.com",
+    maintenanceCost: 4200,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 8,
+    name: "Bioplastic Materials",
+    description: "Plastics derived from renewable biomass sources.",
+    category: "Materials",
+    efficiency: 50,
+    contactEmail: "info@bioplastic.example.com",
+    maintenanceCost: 1400,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 9,
+    name: "Smart Grids",
+    description: "Advanced electrical grids with monitoring and control.",
+    category: "Energy Infrastructure",
+    efficiency: 85,
+    contactEmail: "grid@smartenergy.example.com",
+    maintenanceCost: 2600,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
+  {
+    id: 10,
+    name: "Water Purification Filters",
+    description: "Filters that remove contaminants from water sources.",
+    category: "Water Management",
+    efficiency: 95,
+    contactEmail: "pure@waterfilters.example.com",
+    maintenanceCost: 600,
+    isDeprecated: false,
+    deprecatedReason: null,
+  },
 ];
 
-// Funcții pentru manipularea datelor
+// Functions for manipulating the in-memory list
 function addTechnology(newTech) {
-  const id = Math.max(...technologies.map(t => t.id)) + 1;
-  const tech = { id, ...newTech };
+  const id = Math.max(...technologies.map((t) => t.id)) + 1;
+  const tech = {
+    maintenanceCost: 0,
+    isDeprecated: false,
+    deprecatedReason: null,
+    ...newTech,
+    id,
+  };
   technologies.push(tech);
   return tech;
 }
 
 function updateTechnology(id, updatedData) {
-  const index = technologies.findIndex(t => t.id === parseInt(id));
+  const index = technologies.findIndex((t) => t.id === parseInt(id, 10));
   if (index !== -1) {
     technologies[index] = { ...technologies[index], ...updatedData };
     return technologies[index];
@@ -30,7 +136,7 @@ function updateTechnology(id, updatedData) {
 }
 
 function deleteTechnology(id) {
-  const index = technologies.findIndex(t => t.id === parseInt(id));
+  const index = technologies.findIndex((t) => t.id === parseInt(id, 10));
   if (index !== -1) {
     const deleted = technologies.splice(index, 1)[0];
     return deleted;
